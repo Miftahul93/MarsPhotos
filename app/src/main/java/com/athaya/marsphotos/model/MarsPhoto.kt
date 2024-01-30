@@ -1,4 +1,4 @@
-package com.athaya.marsphotos.network
+package com.athaya.marsphotos.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
