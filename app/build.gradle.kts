@@ -77,4 +77,6 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.11.0")
     // Kotlin serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
+    // Pengujian lokal
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
 }
