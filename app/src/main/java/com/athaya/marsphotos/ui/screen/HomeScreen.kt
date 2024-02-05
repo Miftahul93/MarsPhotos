@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
@@ -34,6 +35,7 @@ import com.athaya.marsphotos.ui.theme.MarsPhotosTheme
 @Composable
 fun HomeScreen(
     marsUiState: MarsUiState,
+    retryAction: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     when (marsUiState) {
@@ -43,7 +45,7 @@ fun HomeScreen(
             modifier = modifier.fillMaxWidth()
         )
 
-        else -> ErrorScreen(modifier = modifier.fillMaxSize())
+        else -> ErrorScreen(retryAction, modifier = modifier.fillMaxSize())
     }
 }
 
@@ -96,7 +98,7 @@ fun LoadingScreen(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun ErrorScreen(modifier: Modifier = Modifier) {
+fun ErrorScreen(retryAction: () -> Unit, modifier: Modifier = Modifier) {
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.Center,
@@ -110,6 +112,9 @@ fun ErrorScreen(modifier: Modifier = Modifier) {
             text = stringResource(id = R.string.loading_failed),
             modifier = Modifier.padding(16.dp)
         )
+        Button(onClick = retryAction) {
+            Text(text = stringResource(id = R.string.retry))
+        }
 
     }
 }
@@ -125,6 +130,22 @@ fun ResultScreen(photos: String, modifier: Modifier = Modifier) {
         modifier = modifier
     ) {
         Text(text = photos)
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun LoadingScreenPreview() {
+    MarsPhotosTheme {
+        LoadingScreen()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ErrorScreenPreview() {
+    MarsPhotosTheme {
+        ErrorScreen({})
     }
 }
 
