@@ -79,4 +79,6 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
     // Pengujian lokal
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
+    // Coil
+    implementation("io.coil-kt:coil-compose:2.4.0")
 }
